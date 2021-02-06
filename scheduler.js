@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    console.log("Hello World")
     $(".saveBtn").on("click", function() {
         var value = $(this).siblings(".description").val();
         var time = $(this).parent().attr("id");
@@ -10,7 +9,6 @@ $(document).ready(function(){
         var currentHour = moment().hours();
         $(".time-block").each(function(){
             var blockHour = parseInt($(this).attr("id").split("-")[1]);
-            console.log($(this).attr("id").split("-")[1]);
 
             if (blockHour < currentHour)
             {
@@ -29,8 +27,6 @@ $(document).ready(function(){
     }
     hourUpdater();
 
-    var interval = setInterval(hourUpdater, 15000);
-
     $("#hour-9 .description").val(localStorage.getItem("hour-9"));
     $("#hour-10 .description").val(localStorage.getItem("hour-10"));
     $("#hour-11 .description").val(localStorage.getItem("hour-11"));
@@ -42,4 +38,5 @@ $(document).ready(function(){
     $("#hour-17 .description").val(localStorage.getItem("hour-17"));
     $("#hour-18 .description").val(localStorage.getItem("hour-18"));
     
-})
+    $("#currentDay").text(moment().format("dddd", "MMMM Do"));
+});
